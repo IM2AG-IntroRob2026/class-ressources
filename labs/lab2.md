@@ -1,22 +1,6 @@
-# Lab 2: Docker & DDS Debugging
+# Lab 2: DDS & Debugging
 
-## 1. ROS2 in Docker
-
-### Running Official Images
-```bash
-docker run -it --rm --net=host ros:jazzy
-```
-Note: `--net=host` is required for ROS2 discovery across containers/host without complex configuration.
-
-### Multi-Container Communication
-Create a bridge network:
-```bash
-docker network create ros_net
-docker run -it --rm --name talker --net ros_net ros:jazzy ros2 run demo_nodes_cpp talker
-docker run -it --rm --name listener --net ros_net ros:jazzy ros2 run demo_nodes_py listener
-```
-
-## 2. DDS Under the Hood
+## 1. DDS Under the Hood
 
 ROS2 uses DDS (Data Distribution Service) for discovery and data transport.
 Key concepts:
@@ -38,7 +22,7 @@ If nodes don't see each other:
    ros2 doctor --report
    ```
 
-## 3. DDS Debugging & Introspection
+## 2. DDS Debugging & Introspection
 
 ### ros2 doctor
 Check system health and middleware configuration:
@@ -64,7 +48,7 @@ sudo apt install ros-jazzy-rmw-cyclonedds-cpp
 export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
 ```
 
-## 4. QoS (Quality of Service) Demos
+## 3. QoS (Quality of Service) Demos
 
 QoS settings control how data is delivered. Mismatched QoS between a publisher and subscriber will prevent communication.
 
@@ -93,7 +77,7 @@ Check why it fails using `--verbose`:
 ros2 topic info /chatter --verbose
 ```
 
-## 5. Network Configuration
+## 4. Network Configuration
 
 ### xml Configuration
 DDS can be configured via XML files for non-multicast environments (e.g., cloud, restrictive subnets).

@@ -116,8 +116,12 @@ A package is the unit of software in ROS2.
 ```bash
 ros2 pkg create --build-type ament_cmake my_robot_controller --dependencies rclcpp geometry_msgs
 ```
+For a Python package:
+```bash
+ros2 pkg create --build-type ament_python my_robot_controller_py --dependencies rclpy geometry_msgs
+```
 
-### Package Implementation Checklist
+### Package Implementation Checklist (C++)
 Once a package is created, verify these files to ensure it's detectable and functional:
 
 #### 1. `package.xml`
@@ -130,6 +134,24 @@ Once a package is created, verify these files to ensure it's detectable and func
 - **ament_target_dependencies**: Link your executable to ROS2 libraries.
 - **install**: Specify where the binary and other files (launch, config) should be installed.
 - **ament_package()**: Must be the last line to finalize the package.
+
+### Package Implementation Checklist (Python)
+Once a package is created, verify these files:
+
+#### 1. `package.xml`
+- **Dependencies**: Ensure `<depend>` tags match your requirements (e.g., `rclpy`, `geometry_msgs`).
+- **Metadata**: Update version, maintainer, and license fields.
+
+#### 2. `setup.py`
+- **entry_points**: Define your node executables here so `ros2 run` can find them.
+  ```python
+  entry_points={
+      'console_scripts': [
+          'my_node = my_robot_controller_py.my_node:main',
+      ],
+  },
+  ```
+- **data_files**: Ensure launch files and config files are installed if you have them.
 
 #### 3. Custom Interfaces (Messages/Services/Actions)
 If creating a dedicated interface package:
@@ -144,6 +166,12 @@ In your node (C++):
 ```cpp
 this->declare_parameter("my_param", 10);
 int val = this->get_parameter("my_param").as_int();
+```
+
+In your node (Python):
+```python
+self.declare_parameter('my_param', 10)
+val = self.get_parameter('my_param').value
 ```
 
 Run with a parameter override:

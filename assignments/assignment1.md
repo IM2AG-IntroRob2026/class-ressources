@@ -39,10 +39,6 @@ The action should:
 4. Provide feedback on the remaining distance to complete the square.
 5. Return `success: true` upon completion.
 
-## Extra Credits
-- **Documentation**: Clear `README.md` with build and run instructions.
-- **Verification**: A test script or `pytest` suite that triggers the action and verifies completion.
-
 ## Evaluation
 Automated tests will be run against your action server. Ensure your interface and topic names match the specification exactly.
 - Action name: `/draw_square`
