@@ -1,4 +1,4 @@
-# HW1: Turtle Square
+# Assignment 1: Turtle Square
 
 ## Objective
 Implement a ROS2 node that moves the `turtlesim` turtle in a square pattern using an **Action** interface.
