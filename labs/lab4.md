@@ -6,7 +6,7 @@ Go through tutorial [Introducing `tf2`](https://docs.ros.org/en/jazzy/Tutorials/
 
 ## Create3 sim
 
-- Install and test the Create3 simulator from [this repo](https://github.com/IM2AG_IntroRob2026/create3_sim).
+- Install and test the Create3 simulator from [this repo](https://github.com/IM2AG-IntroRob2026/create3_sim).
     - Run the /undock action 
     - Move the robot with Gazebo GUI teleop
     - Test the different worlds    
