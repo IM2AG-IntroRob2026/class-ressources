@@ -33,7 +33,7 @@ When using the shared wifi hotspot, consider adjusting `ROS_DOMAIN_ID` to someth
 
 1. Boot the robot by setting it on its (plugged) dock. Wait until it sings.
 2. Start and connect to the wifi hot spot *on the robot*: press buttons 1+2 for a few seconds until it sings and glows blue. Connect your laptop wifi to the robot's when done 
-3. Connect to the web service provided by the robot at 192.168.1.10
+3. Connect to the web service provided by the robot at 192.168.10.1
 4. Checks and update if needed the robot namespace and `ROS_DOMAIN_ID`
 4. In the Connect tab, enter the Wifi name (e.g., `wifi-f218`) and password that you will use with the robot and the laptop, click Connect. Wait until it sings and glows white again
 5. When both laptop and robot are connected to the same wifi, checks that the robots topics, services and action are visible from ROS2 Iron install (either docker with --net=host or native)
