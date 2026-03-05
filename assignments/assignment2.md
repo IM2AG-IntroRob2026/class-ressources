@@ -13,4 +13,9 @@ Using the architecture of your choice, implement a strategy for the turtle to dr
 - At any moment, if the space bar is hit on the keyboard, the turtle should stop moving and listen to keyboard commands (teleop)
 - When in manual mode, the turtle should resume its drawing boundaries behavior.
 
+## Implementation
+
+The whole thing should start using `draw_boundaries.launch.py`. Options can be added at the team's discretion, but have to be documented in the README. 
+
+
 ## Due date on April 1 at midnight

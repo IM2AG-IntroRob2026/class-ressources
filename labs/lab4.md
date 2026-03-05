@@ -1,4 +1,4 @@
-# Lab 4 TF2 and Create3 Gazebo Simulator
+# Lab 4: TF2 and Create3 Gazebo Simulator
 
 ## tf2 with turtlesim
 
