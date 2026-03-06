@@ -40,6 +40,39 @@ When using the shared wifi hotspot, consider adjusting `ROS_DOMAIN_ID` to someth
 
 ## Test and explore the Robot ROS2 API
 
+### Basic tests
+Confirm that the robot is connected:
+```bash
+ros2 topic list
+```
+You should see something like:
+```
+/G1_robot/battery_state
+/G1_robot/cliff_intensity
+/G1_robot/cmd_audio
+/G1_robot/cmd_lightring
+/G1_robot/cmd_vel
+/G1_robot/cmd_vel_stamped
+/G1_robot/dock_status
+/G1_robot/hazard_detection
+/G1_robot/imu
+(...)
+```
+Then you should be able to undock the robot with 
+```
+ros2 action send_goal /G1_robot/undock irobot_create_msgs/action/Undock "{}"
+```
+
+### teleop 
+
+Assuming your namespace is `/Robot5`, run
+```bash
+ros2 run teleop_twist_keyboard teleop_twist_keyboard --ros-args --remap cmd_vel:=/Robot5/cmd_vel
+``` 
+
+
+### Other tests
+
 Go to [Create3 documentation for the ROS2 API](https://iroboteducation.github.io/create3_docs/api/ros2/).
 
 If needed, you can connect back to the robot web service by going to its IP address on the shared wifi hotspot.
