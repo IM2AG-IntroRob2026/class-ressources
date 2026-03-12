@@ -35,10 +35,43 @@ When using the shared wifi hotspot, consider adjusting `ROS_DOMAIN_ID` to someth
 2. Start and connect to the wifi hot spot *on the robot*: press buttons 1+2 for a few seconds until it sings and glows blue. Connect your laptop wifi to the robot's when done 
 3. Connect to the web service provided by the robot at 192.168.10.1
 4. Checks and update if needed the robot namespace and `ROS_DOMAIN_ID`
-4. In the Connect tab, enter the Wifi name (e.g., `wifi-f218`) and password that you will use with the robot and the laptop, click Connect. Wait until it sings and glows white again
+4. In the Connect tab, enter the Wifi name (e.g., `wifi-F218`) and password that you will use with the robot and the laptop, click Connect. Wait until it sings and glows white again
 5. When both laptop and robot are connected to the same wifi, checks that the robots topics, services and action are visible from ROS2 Iron install (either docker with --net=host or native)
 
 ## Test and explore the Robot ROS2 API
+
+### Basic tests
+Confirm that the robot is connected:
+```bash
+ros2 topic list
+```
+You should see something like:
+```
+/G1_robot/battery_state
+/G1_robot/cliff_intensity
+/G1_robot/cmd_audio
+/G1_robot/cmd_lightring
+/G1_robot/cmd_vel
+/G1_robot/cmd_vel_stamped
+/G1_robot/dock_status
+/G1_robot/hazard_detection
+/G1_robot/imu
+(...)
+```
+Then you should be able to undock the robot with 
+```
+ros2 action send_goal /G1_robot/undock irobot_create_msgs/action/Undock "{}"
+```
+
+### teleop 
+
+Assuming your namespace is `/Robot5`, run
+```bash
+ros2 run teleop_twist_keyboard teleop_twist_keyboard --ros-args --remap cmd_vel:=/Robot5/cmd_vel
+``` 
+
+
+### Other tests
 
 Go to [Create3 documentation for the ROS2 API](https://iroboteducation.github.io/create3_docs/api/ros2/).
 
